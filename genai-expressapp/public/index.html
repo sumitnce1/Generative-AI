@@ -8,10 +8,12 @@
   <script src="script.js" defer></script>
 </head>
 <body class="body">
-  <h1>Generative AI Demo</h1>
+  <h1>Generative AI Demo Using Gemini API</h1>
   <input type="text" id="query" autofocus placeholder="Enter your query">
   <button onclick="generateContent()">✨Generate</button>
-  <div id="loader" class="loader"></div> <!-- CSS loader -->
-  <p id="response" style="display: none; text-align: justify;"></p> <!-- Initially hidden -->
+  <div class="responsecontent">
+    <div id="loader" class="loader"></div> <!-- CSS loader -->
+    <p id="response" style="display: none; text-align: justify;"></p> <!-- Initially hidden -->
+  </div>
 </body>
 </html>

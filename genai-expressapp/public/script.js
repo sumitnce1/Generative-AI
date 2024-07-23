@@ -4,17 +4,17 @@ async function generateContent() {
   const responseParagraph = document.getElementById("response");
 
   if (!query) {
-    alert("Please enter a query");
+    alert("Please enter a prompt");
     return;
   }
 
   try {
     // Show loader while fetching data
     loader.style.display = "block";
-    responseParagraph.style.display = "none"; // Hide response paragraph
+    responseParagraph.style.display = "none";
 
     const response = await fetch(
-      `/generate?query=${encodeURIComponent(query)}`
+      `/genai?query=${encodeURIComponent(query)}`
     );
     const data = await response.json();
 

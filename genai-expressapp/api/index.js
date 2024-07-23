@@ -1,4 +1,5 @@
 const express = require("express");
+const { marked } = require("marked");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
 
@@ -13,7 +14,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 app.use(express.static("public"));
 
 // Route for generating content
-app.get("/generate", async (req, res) => {
+app.get("/genai", async (req, res) => {
   try {
     const { query } = req.query;
 
@@ -21,12 +22,16 @@ app.get("/generate", async (req, res) => {
       return res.status(400).json({ error: "Query parameter is required" });
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
     const result = await model.generateContent(query);
+    const generatedContent = result.response.text();
 
-    // Send the generated content as JSON response
-    res.json({ response: result.response.text() });
+    // Convert generated content to Markdown using 'marked'
+    const markdownContent = marked(generatedContent);
+
+    // Send the Markdown content as JSON response
+    res.json({ response: markdownContent });
   } catch (error) {
     console.error("Error generating content:", error);
     res.status(500).json({ error: "Failed to generate content" });

@@ -10,21 +10,25 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.body{
+.body {
   text-align: center;
 }
 
-input{
+input {
   padding: 15px;
   font-size: 20px;
   border-radius: 15px;
 }
 
-button{
+button {
   padding: 15px;
   font-size: 20px;
   background-color: darkblue;
@@ -32,4 +36,13 @@ button{
   border: 0px solid white;
   border-radius: 15px;
   cursor: pointer;
+}
+
+.responsecontent {
+  width: 80%;
+  background-color: aqua;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-top: 5px;
 }
